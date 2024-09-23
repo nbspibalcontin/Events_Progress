@@ -8,9 +8,17 @@ public class Program
 
     public static void Main(string[] args)
     {
-        // Define the callback method
-        ProgressCallback callback = progress => Console.WriteLine($"Download progress: {progress}%");
+        try
+        {
+            // Define the callback method
+            ProgressCallback callback = progress =>
+                Console.WriteLine($"Download progress: {progress}%");
 
-        downloaderService.StartDownload(callback);
+            downloaderService.StartDownload(callback);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: ${ex.Message}");
+        }
     }
 }
